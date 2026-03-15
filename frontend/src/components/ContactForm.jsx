@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Send } from 'lucide-react';
+import axios from 'axios';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { toast } from '../hooks/use-toast';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -29,22 +32,34 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Mock submission - will be replaced with backend API
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    try {
+      const response = await axios.post(`${BACKEND_URL}/api/contact`, formData);
+      
+      if (response.data.success) {
+        toast({
+          title: "Meddelande skickat!",
+          description: response.data.message || "Tack för ditt meddelande. Vi återkommer inom kort.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          company: '',
+          email: '',
+          website: '',
+          message: ''
+        });
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
       toast({
-        title: "Meddelande skickat!",
-        description: "Tack för ditt meddelande. Vi återkommer inom kort.",
+        title: "Ett fel uppstod",
+        description: error.response?.data?.detail || "Kunde inte skicka meddelandet. Försök igen senare.",
+        variant: "destructive"
       });
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        website: '',
-        message: ''
-      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
