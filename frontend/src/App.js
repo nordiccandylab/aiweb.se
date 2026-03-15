@@ -9,6 +9,7 @@ import Webbplatser from './pages/Webbplatser';
 import Varumarke from './pages/Varumarke';
 import OmOss from './pages/OmOss';
 import { Toaster } from './components/ui/toaster';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   useEffect(() => {
@@ -19,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/virtuellassistans" element={<VirtuellAssistans />} />
