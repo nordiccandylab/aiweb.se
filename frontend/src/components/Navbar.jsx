@@ -43,25 +43,15 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.div 
-            className="flex items-center gap-2 cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             whileHover={{ scale: 1.05 }}
           >
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-xl">AI</span>
-            </div>
-            <div>
-              <h1 className={`text-2xl font-bold transition-colors ${
-                isScrolled ? 'text-gray-900' : 'text-white'
-              }`}>
-                AiWeb
-              </h1>
-              <p className={`text-xs transition-colors ${
-                isScrolled ? 'text-gray-600' : 'text-gray-300'
-              }`}>
-                Webdesign Ai Solutions
-              </p>
-            </div>
+            <img 
+              src="https://static.wixstatic.com/media/40146f_4e2970803cd741cd9d9de5f8744b4e86~mv2.png/v1/fill/w_120,h_120,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/40146f_4e2970803cd741cd9d9de5f8744b4e86~mv2.png"
+              alt="AiWeb Logo"
+              className="h-14 w-auto"
+            />
           </motion.div>
 
           {/* Desktop Navigation */}

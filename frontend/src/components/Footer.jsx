@@ -11,14 +11,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">AI</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">{companyInfo.name}</h3>
-                <p className="text-sm text-gray-400">{companyInfo.tagline}</p>
-              </div>
+            <div className="flex items-center gap-3 mb-4">
+              <img 
+                src="https://static.wixstatic.com/media/40146f_4e2970803cd741cd9d9de5f8744b4e86~mv2.png/v1/fill/w_120,h_120,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/40146f_4e2970803cd741cd9d9de5f8744b4e86~mv2.png"
+                alt="AiWeb Logo"
+                className="h-12 w-auto"
+              />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Professionella AI-lösningar och webbdesign för moderna företag. 25 års erfarenhet inom webutveckling.
