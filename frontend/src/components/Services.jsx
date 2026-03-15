@@ -4,8 +4,11 @@ import { ArrowRight } from 'lucide-react';
 import { services } from '../data/mock';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="services" className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,6 +56,7 @@ const Services = () => {
                   </CardDescription>
                   <Button 
                     variant="ghost" 
+                    onClick={() => navigate(service.link)}
                     className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 p-0 h-auto font-semibold group/btn"
                   >
                     Läs mer
