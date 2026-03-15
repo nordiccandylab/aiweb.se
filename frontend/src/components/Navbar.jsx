@@ -52,7 +52,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+          ? 'bg-slate-900/95 backdrop-blur-md shadow-lg' 
           : 'bg-transparent'
       }`}
     >
@@ -68,7 +68,6 @@ const Navbar = () => {
               src="https://customer-assets.emergentagent.com/job_aiweb-pro/artifacts/f791rmj7_0c6f7688-cf1a-4e18-a947-1d9a49b7cafb.png"
               alt="AiWeb Logo"
               className="h-14 w-auto"
-              style={{ filter: isScrolled ? 'none' : 'brightness(1.1)' }}
             />
           </motion.div>
 
@@ -78,9 +77,7 @@ const Navbar = () => {
               <button
                 key={item.id}
                 onClick={() => handleNavigation(item.id)}
-                className={`text-base font-medium transition-colors hover:text-blue-600 ${
-                  isScrolled ? 'text-gray-700' : 'text-white'
-                }`}
+                className="text-base font-medium text-white hover:text-blue-400 transition-colors"
               >
                 {item.label}
               </button>
@@ -96,11 +93,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors ${
-              isScrolled 
-                ? 'text-gray-900 hover:bg-gray-100' 
-                : 'text-white hover:bg-white/10'
-            }`}
+            className="md:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6" />
