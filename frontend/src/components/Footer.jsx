@@ -13,9 +13,9 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <img 
-                src="https://static.wixstatic.com/media/40146f_4e2970803cd741cd9d9de5f8744b4e86~mv2.png/v1/fill/w_120,h_120,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/40146f_4e2970803cd741cd9d9de5f8744b4e86~mv2.png"
+                src="https://customer-assets.emergentagent.com/job_aiweb-pro/artifacts/f791rmj7_0c6f7688-cf1a-4e18-a947-1d9a49b7cafb.png"
                 alt="AiWeb Logo"
-                className="h-12 w-auto"
+                className="h-16 w-auto"
               />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">

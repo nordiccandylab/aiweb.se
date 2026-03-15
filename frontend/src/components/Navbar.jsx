@@ -48,9 +48,10 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
           >
             <img 
-              src="https://static.wixstatic.com/media/40146f_4e2970803cd741cd9d9de5f8744b4e86~mv2.png/v1/fill/w_120,h_120,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/40146f_4e2970803cd741cd9d9de5f8744b4e86~mv2.png"
+              src="https://customer-assets.emergentagent.com/job_aiweb-pro/artifacts/f791rmj7_0c6f7688-cf1a-4e18-a947-1d9a49b7cafb.png"
               alt="AiWeb Logo"
               className="h-14 w-auto"
+              style={{ filter: isScrolled ? 'none' : 'brightness(1.1)' }}
             />
           </motion.div>
 
