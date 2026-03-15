@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from './ui/button';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,11 +18,25 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
+  const handleNavigation = (id) => {
+    setIsMobileMenuOpen(false);
+    
+    // If we're not on the home page, navigate to home first
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation to complete, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      // We're already on home page, just scroll
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -44,7 +61,7 @@ const Navbar = () => {
           {/* Logo */}
           <motion.div 
             className="flex items-center gap-3 cursor-pointer"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => navigate('/')}
             whileHover={{ scale: 1.05 }}
           >
             <img 
@@ -60,7 +77,7 @@ const Navbar = () => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavigation(item.id)}
                 className={`text-base font-medium transition-colors hover:text-blue-600 ${
                   isScrolled ? 'text-gray-700' : 'text-white'
                 }`}
@@ -69,7 +86,7 @@ const Navbar = () => {
               </button>
             ))}
             <Button
-              onClick={() => scrollToSection('contact')}
+              onClick={() => handleNavigation('contact')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
             >
               Kom igång
@@ -103,7 +120,7 @@ const Navbar = () => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavigation(item.id)}
                 className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors"
               >
                 {item.label}
@@ -111,7 +128,7 @@ const Navbar = () => {
             ))}
             <div className="px-4 pt-2">
               <Button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => handleNavigation('contact')}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white"
               >
                 Kom igång
