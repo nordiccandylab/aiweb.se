@@ -1,9 +1,19 @@
 import React from 'react';
 import { Mail, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { companyInfo } from '../data/mock';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+
+  const services = [
+    { name: 'AI-automatisering', link: '/aiautomatisering' },
+    { name: 'Webbdesign & E-handel', link: '/webbplatser' },
+    { name: 'Digital marknadsföring', link: '/digitalmarknadsforing' },
+    { name: 'Virtuell assistent', link: '/virtuellassistans' },
+    { name: 'Varumärkesprofil', link: '/varumarke' }
+  ];
 
   return (
     <footer className="bg-slate-900 text-white py-12 border-t border-slate-800">
@@ -15,7 +25,8 @@ const Footer = () => {
               <img 
                 src="https://customer-assets.emergentagent.com/job_aiweb-pro/artifacts/f791rmj7_0c6f7688-cf1a-4e18-a947-1d9a49b7cafb.png"
                 alt="AiWeb Logo"
-                className="h-16 w-auto"
+                className="h-16 w-auto cursor-pointer"
+                onClick={() => navigate('/')}
               />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -50,11 +61,15 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Våra tjänster</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li className="hover:text-blue-400 transition-colors cursor-pointer">AI-automatisering</li>
-              <li className="hover:text-blue-400 transition-colors cursor-pointer">Webbdesign & E-handel</li>
-              <li className="hover:text-blue-400 transition-colors cursor-pointer">Digital marknadsföring</li>
-              <li className="hover:text-blue-400 transition-colors cursor-pointer">Virtuell assistent</li>
-              <li className="hover:text-blue-400 transition-colors cursor-pointer">Varumärkesprofil</li>
+              {services.map((service, index) => (
+                <li 
+                  key={index}
+                  onClick={() => navigate(service.link)}
+                  className="hover:text-blue-400 transition-colors cursor-pointer"
+                >
+                  {service.name}
+                </li>
+              ))}
             </ul>
           </div>
         </div>
